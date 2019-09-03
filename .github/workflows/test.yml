@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: compile test file
       run: |
-        printf %s 'package main; func main(){print("hi\n")}' > main.go
+        printf %s 'package main;import "fmt";func main(){fmt.Println("hi")}' > main.go
         go build -o hi main.go
     - uses: joshuarli/strip-upx-action@devel
       with:
