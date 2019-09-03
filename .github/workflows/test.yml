@@ -11,14 +11,12 @@ jobs:
     steps:
     - name: compile test file
       run: |
-        echo 'package main; func main(){print("hi")}' > main.go
+        echo 'package main; func main(){print("hi\n")}' > main.go
         go build -o hi main.go
     - uses: joshuarli/strip-upx-action@devel
-# TODO: pass infile, arguments to strip, upx here
-# at the moment, i'm not sure if it's possible to call into a github action's docker container to do, for example:
-# - name: run strip
-#   run: strip --strip-all ./hi
-# - name: run upx
-#   run: upx -9 ./hi
+      with:
+        infile: 'hi'
+        strip_args: '--strip-all'
+        upx_args: '-9'
     - name: test correctness
       run: test "$(./hi)" = hi
