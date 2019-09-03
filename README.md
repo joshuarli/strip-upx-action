@@ -1,5 +1,8 @@
 # strip-upx-action
 
+This is a GitHub Action to strip and run UPX on an executable.
+
+
 ## Usage
 
 Example:
