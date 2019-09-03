@@ -17,7 +17,7 @@ jobs:
     - uses: joshuarli/strip-upx-action@devel
       with:
         infile: 'hi'
-        strip_args: '--strip-all'
+        strip_args: '-v --strip-all'
         upx_args: '-9'
     - name: test correctness
       run: test "$(./hi)" = hi

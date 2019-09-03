@@ -9,10 +9,10 @@ report_size () {
 
 report_size
 echo "running strip"
-strip "$INPUT_STRIP_ARGS" "$INPUT_INFILE"
+strip $INPUT_STRIP_ARGS "$INPUT_INFILE"
 
 report_size
 echo "running upx"
-upx "$INPUT_UPX_ARGS" "$INPUT_INFILE"
+upx $INPUT_UPX_ARGS "$INPUT_INFILE"
 
 report_size
