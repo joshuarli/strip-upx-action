@@ -11,7 +11,8 @@ jobs:
     steps:
     - name: compile test file
       run: |
-        printf "%s\n%s" '#include "stdio.h"' 'main(){puts("hi");}' | gcc -static -xc -ohi -
+        echo 'package main; func main(){print("hi")}' > main.go
+        go build -o hi main.go
     - uses: joshuarli/strip-upx-action@devel
 # TODO: pass infile, arguments to strip, upx here
 # at the moment, i'm not sure if it's possible to call into a github action's docker container to do, for example:
