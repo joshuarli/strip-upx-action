@@ -8,13 +8,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-16.04, ubuntu-18.04, macOS-10.14]
+# for macOS-10.14:
+# Run joshuarli/strip-upx-action@devel
+# [error]Container action is only supported on Linux
+        os: [ubuntu-16.04, ubuntu-18.04]
     steps:
     - name: compile test file
       run: |
         printf %s 'package main;import "fmt";func main(){fmt.Println("hi")}' > main.go
         go build -o hi main.go
-    - uses: joshuarli/strip-upx-action@devel
+    - uses: joshuarli/strip-upx-action@master
       with:
         infile: 'hi'
         strip_args: '-v --strip-all'
