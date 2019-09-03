@@ -1,0 +1,9 @@
+name: 'Strip UPX Action'
+description: 'GitHub Action that provides strip and upx'
+author: 'JoshuaRLi'
+# TODO: possible to pass upx git sha via inputs: and build docker container?
+#       right now it's assumed to be alpine's upx (3.95), which is latest stable release
+#       but there are some fixes/improvements in upx's devel branch.
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

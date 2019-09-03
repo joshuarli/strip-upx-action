@@ -1,0 +1,21 @@
+name: Test
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: testing on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-16.04]
+    steps:
+    - uses: joshuarli/strip-upx-action@master
+    - name: compile test file
+      run: |
+        printf "%s\n%s" '#include "stdio.h"' 'main(){puts("hi");}' | gcc -static -xc -ohi -
+    - name: run strip
+      run: strip --strip-all ./hi
+    - name: run upx
+      run: upx -9 ./hi
+    - name: test correctness
+      run: test "$(./hi)" = hi
