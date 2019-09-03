@@ -9,7 +9,7 @@ jobs:
       matrix:
         os: [ubuntu-16.04]
     steps:
-    - uses: joshuarli/strip-upx-action@master
+    - uses: joshuarli/strip-upx-action@devel
     - name: compile test file
       run: |
         printf "%s\n%s" '#include "stdio.h"' 'main(){puts("hi");}' | gcc -static -xc -ohi -
